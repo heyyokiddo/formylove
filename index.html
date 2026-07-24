@@ -301,11 +301,28 @@ button, #message, #finalMessage {
       }, 500);
     }
 
-    document.getElementById("button1").onclick = () => {
-      const finalMsg = document.getElementById("finalMessage");
-      finalMsg.textContent = button1Message;
-      finalMsg.style.opacity = "1";
-    };
+document.getElementById("button1").onclick = () => {
+  const finalMsg = document.getElementById("finalMessage");
+  const subtitle = document.getElementById("subtitle");
+
+  // Normal message
+  finalMsg.textContent = button1Message;
+  finalMsg.style.opacity = "1";
+
+  // Restore subtitle
+  subtitle.textContent = "Ты самый лучший парень!";
+
+  document.getElementById("message").textContent = "хехе, я тоже тебя люблю <3";
+
+  // Restore background
+  document.body.classList.remove("broken");
+
+  // Restore hearts
+  document.querySelectorAll(".bg-heart").forEach(heart => {
+    heart.textContent = "❤";
+    heart.style.color = heart.style.getPropertyValue("--color");
+  });
+};
 
 document.getElementById("button2").onclick = () => {
   const finalMsg = document.getElementById("finalMessage");
@@ -315,6 +332,8 @@ document.getElementById("button2").onclick = () => {
   finalMsg.style.opacity = "1";
 
   document.getElementById("subtitle").textContent = "I thought we were having a nice day!!!!";
+
+  document.getElementById("message").textContent = "люблю тебя!!! клянусь!!";
 
   // Change background
   document.body.classList.add("broken");
