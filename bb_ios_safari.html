@@ -1,0 +1,311 @@
+<html lang="ru"><head>
+<meta charset="UTF-8">
+  <title>Для любимый</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka@5.2.6/index.css">
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ff94cb, #ffd1ed);
+      font-family: "Iosevka","SF Mono","Menlo","Consolas",monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding-top: 50px;
+      min-height: 100svh;
+      overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c671d9;
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 50px;
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6);
+    }
+
+h1, #subtitle, button, #message, #finalMessage, #decisionButtons {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-heart {
+  position: absolute;
+  font-size: var(--size);
+  color: var(--color);
+  opacity: 0.2;
+  transform: rotate(var(--rotate));
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+    button {
+      padding: 20px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      border: none;
+      border-radius: 15px;
+      background-color: white;
+      color: #e366bb;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: background-color 0.3s, transform 0.2s;
+      margin: 10px; 
+    }
+
+.bg-heart {
+  position: absolute;
+  font-size: var(--size);
+  color: var(--color);
+  opacity: 0.2;
+  transform: rotate(var(--rotate));
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  animation: floatSlow 6s infinite ease-in-out alternate;
+}
+
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px) rotate(var(--rotate));
+  }
+  100% {
+    transform: translateY(-30px) rotate(calc(var(--rotate) + 5deg));
+  }
+}
+
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+      );
+      transform: skewX(-25deg);
+    }
+
+button {
+  background: linear-gradient(135deg, #fff0f8, #ffe6f0);
+}
+button:hover {
+  background: linear-gradient(135deg, #ffb3e6, #c23c69);
+}
+
+button {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+button {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* subtle depth */
+}
+button:active {
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2); /* pressed effect */
+}
+
+    button:hover {
+      background-color: #c23c69;
+      color: white;
+      transform: scale(0.95);
+    }
+
+    button:hover::before {
+      left: 125%;
+      transition: left 0.7s;
+    }
+
+    button:active {
+      transform: scale(0.9);
+      transition: transform 0.1s;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 28px;
+      color: #ffffff;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s;
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.9);
+    }
+
+    #decisionButtons {
+      display: none; 
+      margin-top: 30px;
+    }
+
+    #decisionButtons button {
+      display: inline-block;
+    }
+
+    #finalMessage {
+      margin-top: 20px;
+      font-size: 28px;
+      color: #ffffff;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s;
+      text-shadow: 2px 2px 2px rgba(0,0,0,0.9);
+    }
+
+    #subtitle {
+      color: #f9dbff;
+      font-size: 28px;
+      margin-bottom: 70px;
+      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.6);
+    }
+
+h1, #subtitle {
+  font-family: "Iosevka","SF Mono","Menlo","Consolas",monospace;
+}
+
+button, #message, #finalMessage {
+  font-family: Arial, sans-serif;
+}
+
+.heart {
+  position: absolute;
+  font-size: 24px;
+  pointer-events: none;
+  animation: floatHeart 0.3s ease-out forwards;
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-10px, -20px) scale(1.2) rotate(-10deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(10px, -40px) scale(1.3) rotate(10deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translate(-5px, -60px) scale(1.2) rotate(-5deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(0, -80px) scale(1) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+  
+@media (max-width:700px){
+body{padding:25px 15px;}
+h1{font-size:42px;margin-bottom:25px;}
+#subtitle{font-size:22px;margin-bottom:45px;}
+button{width:90%;max-width:340px;font-size:20px;padding:18px;}
+#decisionButtons{flex-direction:column;align-items:center;}
+#message,#finalMessage{font-size:22px;padding:0 15px;}
+}
+
+</style>
+</head>
+
+<body>
+
+  <h1>💕Привет любимый💕</h1>
+  <h2 id="subtitle">Ты самый лучший парень!</h2>
+
+  <button onclick="showMessage()">нажми, если любишь меня</button>
+
+  <div id="message">
+    хехе, я тоже тебя люблю &lt;3
+  </div>
+
+  <div id="decisionButtons">
+    <button id="button1">Верю</button>
+    <button id="button2">Не верю</button>
+  </div>
+
+  <div id="finalMessage"></div>
+
+  <script>
+    const button1Text = "Верю";
+    const button1Message = "Ура! Муа муа муааа)";
+
+    const button2Text = "Не верю";
+    const button2Message = "Ноу ноу ноу НОУ НОУ ДОНТ ДУ ЭЭЭТ!!";
+
+    document.getElementById("button1").textContent = button1Text;
+    document.getElementById("button2").textContent = button2Text;
+
+    function showMessage() {
+      const msg = document.getElementById("message");
+      msg.style.opacity = "1";
+      setTimeout(() => {
+        document.getElementById("decisionButtons").style.display = "flex";
+      }, 500);
+    }
+
+    document.getElementById("button1").onclick = () => {
+      const finalMsg = document.getElementById("finalMessage");
+      finalMsg.textContent = button1Message;
+      finalMsg.style.opacity = "1";
+    };
+
+    document.getElementById("button2").onclick = () => {
+      const finalMsg = document.getElementById("finalMessage");
+      finalMsg.textContent = button2Message;
+      finalMsg.style.color = "#8a0413";
+      finalMsg.style.opacity = "1";
+    };
+
+function popHeart(event) {
+  const heart = document.createElement("div");
+  heart.textContent = "💕";
+  heart.className = "heart";
+  
+  const rect = event.target.getBoundingClientRect();
+  heart.style.left = rect.left + rect.width / 2 + "px";
+  heart.style.top = rect.top + "px";
+  
+  document.body.appendChild(heart);
+  
+  setTimeout(() => {
+    heart.remove();
+  }, 1500);
+}
+
+const heartCount = 23;
+const colors = ["#994a7c", "#b872a1", "#b872a1"];
+const sizes = [50, 60, 70]; // in px
+const rotations = [-25, -10, 0, 10, 25];
+
+for (let i = 0; i < heartCount; i++) {
+  const heart = document.createElement("div");
+  heart.textContent = "❤";
+  heart.className = "bg-heart";
+
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.top = Math.random() * window.innerHeight + "px";
+
+  heart.style.setProperty("--size", sizes[Math.floor(Math.random() * sizes.length)] + "px");
+  heart.style.setProperty("--color", colors[Math.floor(Math.random() * colors.length)]);
+  heart.style.setProperty("--rotate", rotations[Math.floor(Math.random() * rotations.length)] + "deg");
+
+  document.body.appendChild(heart);
+}
+
+document.querySelectorAll("button").forEach(btn => {
+  btn.addEventListener("click", popHeart);
+});
+
+  </script><div class="bg-heart" style="left: 1163.17px; top: 222.603px; --size: 50px; --color: #b872a1; --rotate: 10deg;">❤</div><div class="bg-heart" style="left: 144.771px; top: 748.527px; --size: 70px; --color: #994a7c; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 1825.45px; top: 527.647px; --size: 50px; --color: #b872a1; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 1572.26px; top: 750.886px; --size: 70px; --color: #994a7c; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 666.985px; top: 492.424px; --size: 50px; --color: #b872a1; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 1496.11px; top: 692.464px; --size: 50px; --color: #994a7c; --rotate: 0deg;">❤</div><div class="bg-heart" style="left: 1835.13px; top: 424.563px; --size: 60px; --color: #994a7c; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 1605.61px; top: 454.481px; --size: 60px; --color: #994a7c; --rotate: 10deg;">❤</div><div class="bg-heart" style="left: 988.689px; top: 75.971px; --size: 70px; --color: #994a7c; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 1617.11px; top: 160.779px; --size: 70px; --color: #b872a1; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 874.457px; top: 646.14px; --size: 50px; --color: #994a7c; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 742.707px; top: 169.186px; --size: 60px; --color: #b872a1; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 1709.43px; top: 690.266px; --size: 70px; --color: #b872a1; --rotate: 25deg;">❤</div><div class="bg-heart" style="left: 636.695px; top: 535.077px; --size: 60px; --color: #994a7c; --rotate: 25deg;">❤</div><div class="bg-heart" style="left: 1316.39px; top: 40.1658px; --size: 50px; --color: #994a7c; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 1529.89px; top: 3.61085px; --size: 50px; --color: #994a7c; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 1394.65px; top: 359.17px; --size: 50px; --color: #b872a1; --rotate: 0deg;">❤</div><div class="bg-heart" style="left: 1055.3px; top: 349.174px; --size: 70px; --color: #b872a1; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 377.333px; top: 69.7263px; --size: 60px; --color: #b872a1; --rotate: -25deg;">❤</div><div class="bg-heart" style="left: 41.5853px; top: 384.785px; --size: 60px; --color: #b872a1; --rotate: 0deg;">❤</div><div class="bg-heart" style="left: 626.872px; top: 434.693px; --size: 50px; --color: #994a7c; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 968.091px; top: 444.115px; --size: 50px; --color: #b872a1; --rotate: -10deg;">❤</div><div class="bg-heart" style="left: 1648.6px; top: 823.143px; --size: 70px; --color: #994a7c; --rotate: 25deg;">❤</div>
+
+
+</body></html>
