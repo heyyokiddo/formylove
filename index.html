@@ -1,6 +1,6 @@
 <html lang="ru"><head>
 <meta charset="UTF-8">
-  <title>Для любимый</title>
+  <title>Для любимого</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka@5.2.6/index.css">
 
@@ -19,6 +19,10 @@ body {
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
     box-sizing: border-box;
+}
+    body.broken {
+  background: #990303;
+  transition: background 0.8s ease;
 }
 
     h1 {
@@ -303,12 +307,22 @@ button, #message, #finalMessage {
       finalMsg.style.opacity = "1";
     };
 
-    document.getElementById("button2").onclick = () => {
-      const finalMsg = document.getElementById("finalMessage");
-      finalMsg.textContent = button2Message;
-      finalMsg.style.color = "#8a0413";
-      finalMsg.style.opacity = "1";
-    };
+document.getElementById("button2").onclick = () => {
+  const finalMsg = document.getElementById("finalMessage");
+
+  finalMsg.textContent = button2Message;
+  finalMsg.style.color = "#ffffff";
+  finalMsg.style.opacity = "1";
+
+  // Change background
+  document.body.classList.add("broken");
+
+  // Change all floating hearts into broken hearts
+  document.querySelectorAll(".bg-heart").forEach(heart => {
+    heart.textContent = "💔";
+    heart.style.color = "#ff4d4d";
+  });
+};
 
 function popHeart(event) {
   const heart = document.createElement("div");
