@@ -5,19 +5,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/iosevka@5.2.6/index.css">
 
   <style>
-    body {
-      background: linear-gradient(to bottom, #ff94cb, #ffd1ed);
-      font-family: "Iosevka","SF Mono","Menlo","Consolas",monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-      padding-top: 50px;
-      min-height: 100svh;
-      overflow-x:hidden;
-      -webkit-text-size-adjust:100%;
-      text-align: center;
-    }
+body {
+    background: linear-gradient(to bottom, #ff94cb, #ffd1ed);
+    font-family: "Iosevka","SF Mono","Menlo","Consolas",monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100svh;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+}
 
     h1 {
       color: #c671d9;
@@ -204,13 +206,54 @@ button, #message, #finalMessage {
 }
 
   
-@media (max-width:700px){
-body{padding:25px 15px;}
-h1{font-size:42px;margin-bottom:25px;}
-#subtitle{font-size:22px;margin-bottom:45px;}
-button{width:90%;max-width:340px;font-size:20px;padding:18px;}
-#decisionButtons{flex-direction:column;align-items:center;}
-#message,#finalMessage{font-size:22px;padding:0 15px;}
+@media (max-width: 430px) {
+
+  body {
+    padding: 20px 18px;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  #subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+    padding: 0 10px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px;
+    font-size: 1.15rem;
+    margin: 10px 0;
+    border-radius: 16px;
+  }
+
+  #decisionButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  #message,
+  #finalMessage {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 0 12px;
+    max-width: 330px;
+  }
+
+  .bg-heart {
+    font-size: calc(var(--size) * 0.7);
+    opacity: 0.15;
+  }
 }
 
 </style>
@@ -281,7 +324,7 @@ function popHeart(event) {
   }, 1500);
 }
 
-const heartCount = 23;
+const heartCount = window.innerWidth < 430 ? 12 : 23;
 const colors = ["#994a7c", "#b872a1", "#b872a1"];
 const sizes = [50, 60, 70]; // in px
 const rotations = [-25, -10, 0, 10, 25];
@@ -291,8 +334,13 @@ for (let i = 0; i < heartCount; i++) {
   heart.textContent = "❤";
   heart.className = "bg-heart";
 
-  heart.style.left = Math.random() * window.innerWidth + "px";
-  heart.style.top = Math.random() * window.innerHeight + "px";
+const padding = 20;
+
+heart.style.left =
+  Math.random() * (window.innerWidth - padding * 2) + padding + "px";
+
+heart.style.top =
+  Math.random() * (window.innerHeight - padding * 2) + padding + "px";
 
   heart.style.setProperty("--size", sizes[Math.floor(Math.random() * sizes.length)] + "px");
   heart.style.setProperty("--color", colors[Math.floor(Math.random() * colors.length)]);
